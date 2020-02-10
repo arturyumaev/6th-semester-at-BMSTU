@@ -33,25 +33,28 @@ def integrate(arr):
 
     return integrated
 
+def y(n):
+    # Starting point
+    x = Polynom(0, 0) # coef=1, degree=1
 
+    multiplied = [x]
 
+    for i in range(n):
+        multiplied_new = mult_poly(multiplied)
+        integrated_new = integrate(multiplied_new)
 
-x3 = Polynom(1/3, 3)
-result = mult_poly([x3])
-integrated = integrate(result)
+        multiplied = integrated_new
 
-print("Constructed:")
+    result = []
+    for p in multiplied:
+        if p.coef != 0:
+            result.append(p)
+
+    return result
+
+result = y(3)
+
 for p in result:
-    print("Polynom degree:{} and coef:{}".format(p.degree, p.coef))
-
-print("\nIntegrated:")
-for p in integrated:
-    print("Polynom degree:{} and coef:{}".format(p.degree, p.coef))
-
-print("\nIntegrated one more time:")
-m2 = mult_poly(integrated)
-integrated_omt = integrate(m2)
-for p in integrated_omt:
     print("Polynom degree:{} and coef:{}".format(p.degree, p.coef))
 
 
