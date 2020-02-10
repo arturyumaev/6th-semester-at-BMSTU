@@ -1,3 +1,6 @@
+import pandas
+import numpy
+
 class Polynom:
     def __init__(self, coef, degree):
         self.coef = coef
@@ -54,7 +57,13 @@ def y(n):
 
 result = y(3)
 
+"""
 for p in result:
     print("Polynom degree:{} and coef:{}".format(p.degree, p.coef))
+"""
 
+pikar_n = 4
+h = 0.01
+df = pandas.DataFrame([[1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6]], columns=['x', 'Pikar 3', 'Pikar 4', 'Pikar n={}'.format(pikar_n), 'explicit', 'implicit'])
 
+print(df)
