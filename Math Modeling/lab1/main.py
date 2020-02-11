@@ -62,6 +62,15 @@ def compute_x(polynom, x):
 
     return result
 
+def func(x, y):
+    return x ** 2 + y ** 2
+
+def explicit(x, y):
+    pass
+
+def implicit(x, y):
+    pass
+
 result = y(3)
 
 """
