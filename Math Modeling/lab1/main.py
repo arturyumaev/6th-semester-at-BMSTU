@@ -55,6 +55,13 @@ def y(n):
 
     return result
 
+def compute_x(polynom, x):
+    result = 0
+    for p in polynom:
+        result += (p.coef * x ** p.degree)
+
+    return result
+
 result = y(3)
 
 """
@@ -62,8 +69,25 @@ for p in result:
     print("Polynom degree:{} and coef:{}".format(p.degree, p.coef))
 """
 
-pikar_n = 4
-h = 0.01
-df = pandas.DataFrame([[1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6]], columns=['x', 'Pikar 3', 'Pikar 4', 'Pikar n={}'.format(pikar_n), 'explicit', 'implicit'])
+# Define polynoms
+pikar_n = 2
 
+poly3 = y(3)
+poly4 = y(4)
+polyn = y(pikar_n)
+
+h = 0.05
+
+values = []
+x = 0
+while x <= 1 + h:
+    values.append([x,
+                   compute_x(poly3, x),
+                   compute_x(poly4, x),
+                   compute_x(polyn, x),
+                   0, 0])
+    x += h
+
+# Construct table
+df = pandas.DataFrame(values, columns=['x', 'Pikar 3', 'Pikar 4', 'Pikar n={}'.format(pikar_n), 'explicit', 'implicit'])
 print(df)
