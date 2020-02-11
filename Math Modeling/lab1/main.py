@@ -65,8 +65,8 @@ def compute_x(polynom, x):
 def func(x, y):
     return x ** 2 + y ** 2
 
-def explicit(x, y):
-    pass
+def explicit(x, y, h):
+    return (y + h * func(x, y));
 
 def implicit(x, y):
     pass
@@ -79,7 +79,7 @@ for p in result:
 """
 
 # Define polynoms
-pikar_n = 2
+pikar_n = 5
 
 poly3 = y(3)
 poly4 = y(4)
@@ -89,13 +89,16 @@ h = 0.05
 
 values = []
 x = 0
+y0 = 0
 while x <= 1 + h:
     values.append([x,
                    compute_x(poly3, x),
                    compute_x(poly4, x),
                    compute_x(polyn, x),
-                   0, 0])
+                   explicit(x, y0, h),
+                   0])
     x += h
+    y0 = explicit(x, y0, h)
 
 # Construct table
 df = pandas.DataFrame(values, columns=['x', 'Pikar 3', 'Pikar 4', 'Pikar n={}'.format(pikar_n), 'explicit', 'implicit'])
