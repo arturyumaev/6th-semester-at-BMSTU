@@ -68,15 +68,12 @@ def func(x, y):
 def explicit(x, y, h):
     return (y + h * func(x, y));
 
-def implicit(x, y):
-    pass
-
-result = y(3)
-
-"""
-for p in result:
-    print("Polynom degree:{} and coef:{}".format(p.degree, p.coef))
-"""
+def implicit(x, y, h):
+    K1 = func(x, y);
+    K2 = func(x + h / 2, y + h * K1 / 2);
+    K3 = func(x + h / 2, y + h * K2 / 2);
+    K4 = func(x + h, y + h * K3);
+    return y + h / 6 * (K1 + 2 * K2 + 2 * K3 + K4);
 
 # Define polynoms
 pikar_n = 5
@@ -96,7 +93,7 @@ while x <= 1 + h:
                    compute_x(poly4, x),
                    compute_x(polyn, x),
                    explicit(x, y0, h),
-                   0])
+                   implicit(x, y0, h)])
     x += h
     y0 = explicit(x, y0, h)
 
