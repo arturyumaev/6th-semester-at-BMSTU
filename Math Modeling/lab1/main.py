@@ -69,8 +69,8 @@ def explicit(x, y, h):
     return (y + h * func(x, y));
 
 def implicit(x, y, h):
-    K1 = func(x, y);
-    K2 = func(x + h / 2, y + h * K1 / 2);
+    K1 = func(x, y)
+    K2 = func(x + h / 2, y + h * K1 / 2)
     K3 = func(x + h / 2, y + h * K2 / 2);
     K4 = func(x + h, y + h * K3);
     return y + h / 6 * (K1 + 2 * K2 + 2 * K3 + K4);
@@ -82,12 +82,12 @@ poly3 = y(3)
 poly4 = y(4)
 polyn = y(pikar_n)
 
-h = 0.05
+h = 0.001
 
 values = []
 x = 0
 y0 = 0
-while x <= 1 + h:
+while x <= 0.5 + h:
     values.append([x,
                    compute_x(poly3, x),
                    compute_x(poly4, x),
