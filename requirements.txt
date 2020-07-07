@@ -40,7 +40,7 @@ pickleshare==0.7.5
 Pillow==6.2.1
 prometheus-client==0.7.1
 prompt-toolkit==2.0.10
-psutil==5.6.3
+psutil==5.6.6
 pydotplus==2.0.2
 Pygments==2.5.1
 pyodbc==4.0.27
